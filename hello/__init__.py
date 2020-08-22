@@ -17,7 +17,10 @@ def create_app():
 
     @app.route('/greeting')
     def greetings():
-        name = request.args['name']
+        name = ''
+        if 'name' in request.args:
+            name = request.args['name']
+
         return 'Kia Ora %s' % name
 
     @app.route('/user/<username>')
